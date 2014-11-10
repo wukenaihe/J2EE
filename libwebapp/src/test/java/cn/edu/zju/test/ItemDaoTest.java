@@ -47,14 +47,22 @@ public class ItemDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void getByReader(){
 		List<Item> lists=itemDao.getItemsByReader("21451001");
 		System.out.println(lists);
 	}
 	
 	@Test
+	@Ignore
 	public void getByBook(){
 		List<Item> lists=itemDao.getItemsByBook("0002");
 		System.out.println(lists);
+	}
+	
+	@Test
+	public void getBorrowNum(){
+		int num=itemDao.borrowNum("21451001");
+		System.out.println(num);
 	}
 }

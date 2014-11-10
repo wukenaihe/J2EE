@@ -44,7 +44,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">图书管理</a></li>
-            <li><a href="../reader/readers">读者管理</a></li>
+            <li><a href="#">读者管理</a></li>
             <li><a href="#">借阅管理</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -58,41 +58,38 @@
       <div class="row">
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">图书浏览</a></li>
-            <li><a href="#">图书借阅</a></li>
+            <li class="active"><a href="#">读者管理</a></li>
           </ul>
         </div>
         <div class="col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">图书管理</h2>
+          <h2 class="sub-header">读者管理</h2>
           <div class="table-responsive">
          	 <a href="add" class="btn btn-success" role="button">添加</a>
              <table class="table table-striped">
                <thead>
                  <tr>
-                   <th>ISBN</th>
-                   <th>书名</th>
-                   <th>作者</th>
-                   <th>出版社</th>
-                   <th>图书册数</th>
-                   <th>剩余</th>
+                   <th>读者学号</th>
+                   <th>姓名</th>
+                   <th>性别</th>
+                   <th>联系方式</th>
+                   <th>借阅图书数量</th>
                    <th></th>
                  </tr>
                </thead>
                <tbody>
-                   <c:forEach items="${list}" var="p" varStatus="count">
+                   <c:forEach items="${users}" var="p" varStatus="count">
                     <tr>
-                        <td>${p.isdn}</td>
-                        <td>${p.bookname}</td>
-                        <td>${p.author}</td>
-                        <td>${p.publish}</td>
-                        <td>${p.total}</td>
-                        <td>${p.remain}</td>
+                        <td>${p.id}</td>
+                        <td>${p.name}</td>
+                        <td>${p.sex}</td>
+                        <td>${p.telphone}</td>
+                        <td>${p.borrowBooks}</td>
                         <td>
-                          <a href="updateBook?isdn=${p.isdn}" class="btn btn-success" role="button">更新</a>
+                          <a href="updateReader?id=${p.id}" class="btn btn-success" role="button">更新</a>
                           <c:choose>
 
-                             <c:when test="${p.total==p.remain}">
-                                 <a href="delete?isdn=${p.isdn}" class="btn btn-danger" role="button">删除</a>
+                             <c:when test="${p.borrowBooks==0}">
+                                 <a href="delete?id=${p.id}" class="btn btn-danger" role="button">删除</a>
                              </c:when>
                                    
                              <c:otherwise>
@@ -100,6 +97,7 @@
                              </c:otherwise>
                             
                           </c:choose>
+                          <a href="search?id=${p.id}" class="btn btn-success" role="button">借阅查看</a>
                          
                         </td>
                     </tr>

@@ -11,4 +11,6 @@ public interface ItemDao extends Dao<Item>{
 	public List<Item> getItemsByBook(String isdn);
 	
 	public List<Item> getItemsByReader(String readerId);
+	
+	public int borrowNum(String readerId);
 }

@@ -1,5 +1,7 @@
 package cn.edu.zju.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,6 +23,8 @@ public class User {
 	private String telphone;
 	@Column
 	private String sex;
+	
+	private int borrowBooks;
 	
 	
 	public String getId() {
@@ -53,7 +57,11 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
-	
-	
+	public int getBorrowBooks() {
+		return borrowBooks;
+	}
+	public void setBorrowBooks(int borrowBooks) {
+		this.borrowBooks = borrowBooks;
+	}
+
 }

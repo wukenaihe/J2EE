@@ -43,8 +43,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">图书管理</a></li>
-            <li><a href="../reader/readers">读者管理</a></li>
+            <li><a href="../book/books">图书管理</a></li>
+            <li><a href="">读者管理</a></li>
             <li><a href="#">借阅管理</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -58,55 +58,48 @@
       <div class="row">
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">图书浏览</a></li>
-            <li><a href="#">图书借阅</a></li>
+            <li class="active"><a href="#">读者管理</a></li>
           </ul>
         </div>
         <div class="col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">图书管理</h2>
-          <div class="table-responsive">
-         	 <a href="add" class="btn btn-success" role="button">添加</a>
-             <table class="table table-striped">
-               <thead>
-                 <tr>
-                   <th>ISBN</th>
-                   <th>书名</th>
-                   <th>作者</th>
-                   <th>出版社</th>
-                   <th>图书册数</th>
-                   <th>剩余</th>
-                   <th></th>
-                 </tr>
-               </thead>
-               <tbody>
-                   <c:forEach items="${list}" var="p" varStatus="count">
-                    <tr>
-                        <td>${p.isdn}</td>
-                        <td>${p.bookname}</td>
-                        <td>${p.author}</td>
-                        <td>${p.publish}</td>
-                        <td>${p.total}</td>
-                        <td>${p.remain}</td>
-                        <td>
-                          <a href="updateBook?isdn=${p.isdn}" class="btn btn-success" role="button">更新</a>
-                          <c:choose>
-
-                             <c:when test="${p.total==p.remain}">
-                                 <a href="delete?isdn=${p.isdn}" class="btn btn-danger" role="button">删除</a>
-                             </c:when>
-                                   
-                             <c:otherwise>
-                                  <a href="#" class="btn btn-danger" role="button" disabled="disabled">删除</a>
-                             </c:otherwise>
-                            
-                          </c:choose>
-                         
-                        </td>
-                    </tr>
-                   </c:forEach>
-               </tbody>
-             </table>
-          </div>
+          <h2 class="sub-header">读者导入</h2>
+          <form class="form-horizontal" role="form" action="addReader" method="post">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="id" placeholder="学号">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="name" placeholder="名字">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+              <div class="col-sm-5">
+                <input type="password" class="form-control" name="password" placeholder="密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="sex" placeholder="性别">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">联系方式</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="telphone" placeholder="联系方式">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">添加</button>
+              </div>
+            </div>
+          </form>
         </div> 
       </div>
     </div>
