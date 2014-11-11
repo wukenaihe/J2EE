@@ -60,4 +60,17 @@ public class ReaderManageController {
 		}
 		return "redirect:/reader/readers";
 	}
+	
+	@RequestMapping(value="update",method=RequestMethod.GET)
+	public String updateReader(String id,Model model){
+		User user=userDao.get(id);
+		model.addAttribute("user", user);
+		return "reader/readerUpdate";
+	}
+	
+	@RequestMapping(value="updateReader",method=RequestMethod.POST)
+	public String updateReader(User user){
+		userDao.update(user);
+		return "redirect:/reader/readers";
+	}
 }

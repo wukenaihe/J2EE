@@ -62,49 +62,44 @@
           </ul>
         </div>
         <div class="col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">读者管理</h2>
-          <div class="table-responsive">
-         	 <a href="add" class="btn btn-success" role="button">添加</a>
-             <table class="table table-striped">
-               <thead>
-                 <tr>
-                   <th>读者学号</th>
-                   <th>姓名</th>
-                   <th>性别</th>
-                   <th>联系方式</th>
-                   <th>借阅图书数量</th>
-                   <th></th>
-                 </tr>
-               </thead>
-               <tbody>
-                   <c:forEach items="${users}" var="p" varStatus="count">
-                    <tr>
-                        <td>${p.id}</td>
-                        <td>${p.name}</td>
-                        <td>${p.sex}</td>
-                        <td>${p.telphone}</td>
-                        <td>${p.borrowBooks}</td>
-                        <td>
-                          <a href="update?id=${p.id}" class="btn btn-success" role="button">更新</a>
-                          <c:choose>
-
-                             <c:when test="${p.borrowBooks==0}">
-                                 <a href="delete?id=${p.id}" class="btn btn-danger" role="button">删除</a>
-                             </c:when>
-                                   
-                             <c:otherwise>
-                                  <a href="#" class="btn btn-danger" role="button" disabled="disabled">删除</a>
-                             </c:otherwise>
-                            
-                          </c:choose>
-                          <a href="search?id=${p.id}" class="btn btn-success" role="button">借阅查看</a>
-                         
-                        </td>
-                    </tr>
-                   </c:forEach>
-               </tbody>
-             </table>
-          </div>
+          <h2 class="sub-header">读者更新</h2>
+          <form class="form-horizontal" role="form" action="updateReader" method="post">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="id" placeholder="学号" value=${user.id}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="name" placeholder="名字" value=${user.name}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+              <div class="col-sm-5">
+                <input type="password" class="form-control" name="password" placeholder="密码" value=${user.password}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="sex" placeholder="性别" value=${user.sex}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">联系方式</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="telphone" placeholder="联系方式" value=${user.telphone}>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">更新</button>
+              </div>
+            </div>
+          </form>
         </div> 
       </div>
     </div>
