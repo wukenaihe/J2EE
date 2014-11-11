@@ -58,45 +58,28 @@
       <div class="row">
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">读者管理</a></li>
+            <li class="active"><a href="#">借图书</a></li>
+            <li><a href="returnMain">还图书</a></li>
           </ul>
         </div>
         <div class="col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">读者导入</h2>
-          <form class="form-horizontal" role="form" action="addReader" method="post">
+          <h2 class="sub-header">借书管理</h2>
+          <form class="form-horizontal" role="form" action="borrow" method="post">
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">借书ISBN</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="id" placeholder="学号">
+                <input type="text" class="form-control" name="isbn" placeholder="ISBN">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">读者学号</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="name" placeholder="名字">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
-              <div class="col-sm-5">
-                <input type="password" class="form-control" name="password" placeholder="密码">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" name="sex" placeholder="性别">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">联系方式</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" name="telphone" placeholder="联系方式">
+                <input type="text" class="form-control" name="readerId" placeholder="学号">
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">添加</button>
+                <button type="submit" class="btn btn-primary">借书</button>
               </div>
             </div>
           </form>

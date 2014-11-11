@@ -45,7 +45,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">图书管理</a></li>
             <li><a href="../reader/readers">读者管理</a></li>
-            <li><a href="#">借阅管理</a></li>
+            <li><a href="../borrow/borrowMain">借阅管理</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -59,7 +59,6 @@
         <div class="col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">图书浏览</a></li>
-            <li><a href="#">图书借阅</a></li>
           </ul>
         </div>
         <div class="col-md-10 col-md-offset-2 main">
