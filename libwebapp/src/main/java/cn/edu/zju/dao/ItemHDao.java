@@ -32,7 +32,7 @@ public class ItemHDao extends HbBaseDao<Item> implements ItemDao {
 
 	@Override
 	public int borrowNum(String readerId) {
-		List<Long> list=find("select sum(id) from Item where isHistory = 'n' and readerId="+readerId);
+		List<Long> list=find("select count(id) from Item where isHistory = 'n' and readerId="+readerId);
 		if(list==null||list.size()==0||list.get(0)==null){
 			return 0;
 		}
