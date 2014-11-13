@@ -53,7 +53,7 @@ body {
 			<c:if test="${!empty errorMsg}">
 				<div class="help-inline" style="color: red">${errorMsg}</div>
 			</c:if>
-			<input type="text" class="input-block-level" placeholder="Account" name="name" value="21451001"> 
+			<input type="text" class="input-block-level" placeholder="Account" name="name" value="21451200"> 
 			<input type="password" class="input-block-level" placeholder="Password" name="password" value="123456">
 			<label class="checkbox"> <input type="checkbox"
 				value="remember-me"> Remember me

@@ -97,7 +97,7 @@
                              </c:otherwise>
                             
                           </c:choose>
-                          <a href="search?id=${p.id}" class="btn btn-success" role="button">借阅查看</a>
+                          <a href="#" class="btn btn-success" role="button" onclick="javascript:refresh('${p.id}')">借阅查看</a>
                          
                         </td>
                     </tr>
@@ -105,11 +105,37 @@
                </tbody>
              </table>
           </div>
-        </div> 
+              <div id="p" class="easyui-panel" title="借阅记录" 
+                  style="width:550px;height:270px;padding:10px;background:#fafafa;"
+                  data-options="iconCls:'icon-save',closable:true,closed:true">
+                  <table class="easyui-datagrid" style="width:500px;height:260px"
+                          data-options="url:'search',method:'get',fitColumns:true,singleSelect:true" id="dg">
+                      <thead>
+                          <tr>
+                              <th data-options="field:'isbn',width:100">ISBN</th>
+                              <th data-options="field:'bookName',width:100">书名</th>
+                              <th data-options="field:'author',width:100">作者</th>
+                              <th data-options="field:'borrowDate',width:200" formatter="formatMethod">借阅时间</th>
+                          </tr>
+                      </thead>
+                  </table>
+            </div>
+        </div>
       </div>
     </div>
     </div>
+	</div>
     <script type="text/javascript">
+    function refresh(id){
+      $('#dg').datagrid('load', {
+          id: id
+      });
+      $('#p').panel('open');
+    }
+
+    function formatMethod(value, row, index) {  
+             return new Date(value);  
+         } 
     </script>
   </body>
 </html>
