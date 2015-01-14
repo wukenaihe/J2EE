@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	   http://www.springframework.org/schema/task  
+       http://www.springframework.org/schema/task/spring-task-3.1.xsd
+	   http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	   http://www.springframework.org/schema/util 
+	   http://www.springframework.org/schema/util/spring-util-3.0.xsd      
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<context:component-scan base-package="com.xumh**" />
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/ty</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+		<property name="initialSize">
+			<value>0</value>
+		</property>
+		<property name="maxActive">
+			<value>4</value>
+		</property>
+		<property name="maxIdle">
+			<value>4</value>
+		</property>
+	</bean>
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClassName"> -->
+<!-- 			<value>com.mysql.jdbc.Driver</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="url"> -->
+<!-- 			<value>jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_xyzqcc</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="username"> -->
+<!-- 			<value>jj0xj3xx1l</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="password"> -->
+<!-- 			<value>542i0jwy235li5mxzkw53kzw02ykjlj3w02434ij</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="initialSize"> -->
+<!-- 			<value>0</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="maxActive"> -->
+<!-- 			<value>4</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="maxIdle"> -->
+<!-- 			<value>4</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="maxWait "> -->
+<!-- 			<value>10000</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.xumh.bean</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop> -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource" />
+
+	<bean id="publicServiceInfo" class="com.xumh.common.PublicServiceInfo">
+		<property name="appID" value="wxfb99c16a2f7af851"></property>
+		<property name="appsecret" value="611f3d39523b6b9f5a7f3828767e52b4"></property>
+	</bean>
+	
+	<bean id="userWeixinInterface" class="com.xumh.service.UserWeixinSae"></bean>
+
+</beans>
