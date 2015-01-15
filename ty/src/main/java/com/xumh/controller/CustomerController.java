@@ -1,5 +1,7 @@
 package com.xumh.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xumh.bean.UserInfo;
 import com.xumh.dao.UserInfoDao;
+import com.xumh.dto.ActivityRegisterRecord;
+import com.xumh.service.UserRegisterActivity;
 import com.xumh.service.UserWeixinInterface;
 
 @Controller
@@ -22,6 +26,8 @@ public class CustomerController {
 	private UserWeixinInterface userWeixinInterface;
 	@Autowired
 	private UserInfoDao userInfoDao;
+	@Autowired
+	private UserRegisterActivity userRegisterActivity;
 
 	public void setUserWeixinInterface(UserWeixinInterface userWeixinInterface) {
 		this.userWeixinInterface = userWeixinInterface;
@@ -31,12 +37,13 @@ public class CustomerController {
 		this.userInfoDao = userInfoDao;
 	}
 
+	public void setUserRegisterActivity(UserRegisterActivity userRegisterActivity) {
+		this.userRegisterActivity = userRegisterActivity;
+	}
 
 	@RequestMapping(value="register",method=RequestMethod.GET)
 	public String registerCustomer(String code,Model model){
 		UserInfo userInfo=userWeixinInterface.getUserInfo(code);
-//		UserInfo userInfo=new UserInfo();
-//		userInfo.setOpenid("oUKteuDrXHEdt_8qasEWkn9FNqbw");
 		if(userInfo==null){
 			logger.error("code:"+code+"  can not get user information");
 			return "";
@@ -50,5 +57,29 @@ public class CustomerController {
 		
 		model.addAttribute("userInfo", userInfo);
 		return "register";
+	}
+	
+	@RequestMapping(value="register-save",method=RequestMethod.POST)
+	public String registerCustomerSave(UserInfo userInfo){
+		try{
+			userInfoDao.update(userInfo);
+		}catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return "error-register";
+		}
+		return "success-register";
+	}
+	
+	
+	@RequestMapping(value="registerActivity",method=RequestMethod.GET)
+	public String registerActivity(String openid,Model model){
+	
+		if(!userRegisterActivity.isRegister(openid)){
+			return "unregister";
+		}
+		List<ActivityRegisterRecord> activityRegisterRecords=userRegisterActivity.getActivityRegisterRecords(openid);
+		
+		model.addAttribute("arr", activityRegisterRecords);
+		return null;
 	}
 }

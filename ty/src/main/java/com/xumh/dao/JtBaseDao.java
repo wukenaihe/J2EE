@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-//@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
+@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 public abstract class JtBaseDao {
 	
 	@Autowired

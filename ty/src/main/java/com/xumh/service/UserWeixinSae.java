@@ -11,12 +11,17 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.sina.sae.fetchurl.SaeFetchurl;
 import com.xumh.bean.UserInfo;
 import com.xumh.common.PublicServiceInfo;
 
+/**
+ * 因为SAE部署的时候resttemplate无法使用https，所以只能使用sae的类来处理
+ * 
+ * @author xumh
+ *
+ */
 public class UserWeixinSae implements UserWeixinInterface {
 	static private Logger logger = LoggerFactory.getLogger(UserWeixinSae.class);
 

@@ -55,17 +55,17 @@
 </head>
 <body>
 	<div id="subjects">
-		<form id="main_form" action="#" method="post" accept-charset="utf-8" style="padding-bottom: 4em;">
+		<form id="main_form" action="register-save" method="post" accept-charset="utf-8" style="padding-bottom: 4em;">
 
 
-			<input type="hidden" value=${userInfo.openid}></input>
-			<input type="hidden" value=${userInfo.nickname}></input>
-			<input type="hidden" value=${userInfo.sex}></input>
-			<input type="hidden" value=${userInfo.province}></input>
-			<input type="hidden" value=${userInfo.city}></input>
-			<input type="hidden" value=${userInfo.country}></input>
-			<input type="hidden" value=${userInfo.headimgurl}></input>
-			<input type="hidden" value=${userInfo.unionid}></input>
+			<input type="hidden" name="openid" value=${userInfo.openid}></input>
+			<input type="hidden" name="nickname" value=${userInfo.nickname}></input>
+			<input type="hidden" name="sex" value=${userInfo.sex}></input>
+			<input type="hidden" name="province" value=${userInfo.province}></input>
+			<input type="hidden" name="city" value=${userInfo.city}></input>
+			<input type="hidden" name="country" value=${userInfo.country}></input>
+			<input type="hidden" name="headimgurl" value=${userInfo.headimgurl}></input>
+			<input type="hidden" name="uuionid" value=${userInfo.unionid}></input>
 			<div class="form_ctrl page_head" title="简历提交">
 				<h2>用户信息</h2>
 			</div>

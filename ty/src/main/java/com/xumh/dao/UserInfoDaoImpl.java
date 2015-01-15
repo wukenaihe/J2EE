@@ -27,7 +27,7 @@ public class UserInfoDaoImpl extends HbBaseDao<UserInfo> implements UserInfoDao 
 		this.jt = jt;
 	}
 
-//	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void updateWeixinInfo(UserInfo userInfo) {
 		try {
 			jt.update(UPDATE_WEIXIN_INFO, userInfo.getNickname(),

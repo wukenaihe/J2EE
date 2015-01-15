@@ -19,7 +19,7 @@ import org.springframework.util.Assert;
 
 import com.xumh.bean.Page;
 
-//@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class HbBaseDao<T>{
 	private Class<T> entityClass;
 	
