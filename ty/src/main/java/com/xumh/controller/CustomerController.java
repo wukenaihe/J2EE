@@ -80,6 +80,16 @@ public class CustomerController {
 		List<ActivityRegisterRecord> activityRegisterRecords=userRegisterActivity.getActivityRegisterRecords(openid);
 		
 		model.addAttribute("arr", activityRegisterRecords);
-		return null;
+		return "registerActivity";
+	}
+	
+	@RequestMapping(value="registerdActivities",method=RequestMethod.GET)
+	public String getActivities(){
+		return "activities";
+	}
+	
+	@RequestMapping(value="registerActivityList",method=RequestMethod.GET)
+	public String getActivityRegister(){
+		return "activity-register-peoples";
 	}
 }

@@ -31,6 +31,8 @@ public class Activity implements Serializable{
 	@Column
 	private Date lastDate;//活动最后期限
 	@Column
+	private Date endDate;//活动结束日期
+	@Column
 	@Lob
 	private String remark;//备注
 
@@ -73,11 +75,21 @@ public class Activity implements Serializable{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
+	
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
 	@Override
 	public String toString() {
 		return "Activity [id=" + id + ", name=" + name + ", maxPepole="
-				+ maxPepole + ", lastDate=" + lastDate + ", remark=" + remark
-				+ "]";
+				+ maxPepole + ", lastDate=" + lastDate + ", endDate=" + endDate
+				+ ", remark=" + remark + "]";
 	}
 }
