@@ -18,6 +18,7 @@ import com.xumh.dao.ActivityDao;
 import com.xumh.dao.ActivityItemDao;
 import com.xumh.dao.UserInfoDao;
 import com.xumh.dto.ActivityRegisterRecord;
+import com.xumh.service.Access_Token;
 import com.xumh.service.UserRegisterActivity;
 import com.xumh.service.UserWeixinInterface;
 
@@ -92,7 +93,9 @@ public class CustomerController {
 	
 	
 	@RequestMapping(value="registerActivity",method=RequestMethod.GET)
-	public String registerActivity(String openid,Model model){
+	public String registerActivity(String code,Model model){
+		Access_Token access_Token=userWeixinInterface.getAccessToken(code);
+		String openid=access_Token.getOpenid();
 	
 		if(!userRegisterActivity.isRegister(openid)){
 			return "unregister";
@@ -124,7 +127,9 @@ public class CustomerController {
 	@RequestMapping(value="registerActivityList",method=RequestMethod.GET)
 	public String getActivityRegister(long activityId,Model model){
 		List<UserInfo> userInfos=activityItemDao.getRegisterList(activityId);
+		Activity activity=activityDao.get(activityId);
 		model.addAttribute("userInfos", userInfos);
+		model.addAttribute("activity", activity);
 		return "activity-register-peoples";
 	}
 }

@@ -93,7 +93,7 @@
 					value="${userInfo.job}" placeholder="职业">
 			</div>
 			<div class="form_ctrl input_text" title="学校">
-				<label class="ctrl_title">学校</label> <input type="text" name="job"
+				<label class="ctrl_title">学校</label> <input type="text" name="school"
 					value="${userInfo.school}" placeholder="学校">
 			</div>
 			<div class="form_ctrl form_select" title="性取向">
@@ -107,7 +107,7 @@
 			</div>
 			<div class="form_ctrl input_text" title="年龄">
 				<label class="ctrl_title">年龄</label> <input type="text"
-					name="input_text" value="${userInfo.age}" placeholder="年龄">
+					name="age" value="${userInfo.age}" placeholder="年龄">
 			</div>
 			<div class="form_ctrl form_select" title="感情状况">
 				<label class="ctrl_title">感情状况</label> 

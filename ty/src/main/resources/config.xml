@@ -23,43 +23,19 @@
 	<context:component-scan base-package="com.xumh**" />
 
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://127.0.0.1:3306/ty</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>123456</value>
-		</property>
-		<property name="initialSize">
-			<value>0</value>
-		</property>
-		<property name="maxActive">
-			<value>4</value>
-		</property>
-		<property name="maxIdle">
-			<value>4</value>
-		</property>
-	</bean>
 <!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" -->
 <!-- 		destroy-method="close"> -->
 <!-- 		<property name="driverClassName"> -->
 <!-- 			<value>com.mysql.jdbc.Driver</value> -->
 <!-- 		</property> -->
 <!-- 		<property name="url"> -->
-<!-- 			<value>jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_xyzqcc</value> -->
+<!-- 			<value>jdbc:mysql://127.0.0.1:3306/ty</value> -->
 <!-- 		</property> -->
 <!-- 		<property name="username"> -->
-<!-- 			<value>jj0xj3xx1l</value> -->
+<!-- 			<value>root</value> -->
 <!-- 		</property> -->
 <!-- 		<property name="password"> -->
-<!-- 			<value>542i0jwy235li5mxzkw53kzw02ykjlj3w02434ij</value> -->
+<!-- 			<value>123456</value> -->
 <!-- 		</property> -->
 <!-- 		<property name="initialSize"> -->
 <!-- 			<value>0</value> -->
@@ -70,10 +46,34 @@
 <!-- 		<property name="maxIdle"> -->
 <!-- 			<value>4</value> -->
 <!-- 		</property> -->
-<!-- 		<property name="maxWait "> -->
-<!-- 			<value>10000</value> -->
-<!-- 		</property> -->
 <!-- 	</bean> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_xyzqcc</value>
+		</property>
+		<property name="username">
+			<value>jj0xj3xx1l</value>
+		</property>
+		<property name="password">
+			<value>542i0jwy235li5mxzkw53kzw02ykjlj3w02434ij</value>
+		</property>
+		<property name="initialSize">
+			<value>0</value>
+		</property>
+		<property name="maxActive">
+			<value>4</value>
+		</property>
+		<property name="maxIdle">
+			<value>4</value>
+		</property>
+		<property name="maxWait">
+			<value>10000</value>
+		</property>
+	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

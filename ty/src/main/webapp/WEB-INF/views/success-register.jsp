@@ -15,48 +15,11 @@
 <link href="<c:url value="/resources/css/form.min.css"/>"
 	rel="stylesheet" type="text/css">
 <style type="text/css">
-#bottom_info {
-	position: relative;
-	top: -3.8em;
-	margin: 0 0.5em;
-	padding: .8em 0;
-	text-align: center;
-	background-color: #18c178;
-	color: #ffffff;
-	border: medium hidden;
-	border-radius: 0.1em;
-	box-sizing: border-box;
-	display: none;
-}
-
-#bottom_info a {
-	/*
-				color: #adadad;
-				*/
-	width: 100%;
-	text-decoration: none;
-	outline: none;
-}
-
-#bottom_jump {
-	position: relative;
-	top: -3em;
-	margin: 0 0.5em;
-	padding: .8em 0;
-	text-align: center;
-	background-color: #62A9E3;
-	color: #ffffff;
-	border: medium hidden;
-	border-radius: 0.1em;
-	box-sizing: border-box;
-	display: none;
-}
 </style>
 </head>
 <body>
 	<div id="subjects">
-		<div id="logo">
 			<div style="margin-bottom: 5px;">恭喜！绑定成功</div>
-		</div>
+	</div>
 </body>
 </html>

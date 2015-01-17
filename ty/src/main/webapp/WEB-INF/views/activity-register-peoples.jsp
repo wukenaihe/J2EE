@@ -24,7 +24,7 @@
 <body>
 	<div data-role="page" id="home">
 		<div data-role="header" data-theme="b" data-position="fixed">
-			<h1>黄山二日游</h1>
+			<h1>${activity.name}</h1>
 		</div>
 		<div data-role="content" data-theme="b">
 		<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke" data-column-btn-text="" data-column-btn-theme="b">

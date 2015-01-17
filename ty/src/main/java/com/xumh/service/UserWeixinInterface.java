@@ -10,4 +10,5 @@ public interface UserWeixinInterface {
 	 * @return
 	 */
 	UserInfo getUserInfo(String code);
+	Access_Token getAccessToken(String code);
 }
