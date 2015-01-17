@@ -1,5 +1,6 @@
 package com.xumh.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,7 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xumh.bean.Activity;
+import com.xumh.bean.ActivityItem;
 import com.xumh.bean.UserInfo;
+import com.xumh.dao.ActivityDao;
+import com.xumh.dao.ActivityItemDao;
 import com.xumh.dao.UserInfoDao;
 import com.xumh.dto.ActivityRegisterRecord;
 import com.xumh.service.UserRegisterActivity;
@@ -28,6 +33,10 @@ public class CustomerController {
 	private UserInfoDao userInfoDao;
 	@Autowired
 	private UserRegisterActivity userRegisterActivity;
+	@Autowired
+	private ActivityItemDao activityItemDao;
+	@Autowired
+	private ActivityDao activityDao;
 
 	public void setUserWeixinInterface(UserWeixinInterface userWeixinInterface) {
 		this.userWeixinInterface = userWeixinInterface;
@@ -39,6 +48,17 @@ public class CustomerController {
 
 	public void setUserRegisterActivity(UserRegisterActivity userRegisterActivity) {
 		this.userRegisterActivity = userRegisterActivity;
+	}
+	
+
+	public void setActivityItemDao(ActivityItemDao activityItemDao) {
+		this.activityItemDao = activityItemDao;
+	}
+	
+	
+
+	public void setActivityDao(ActivityDao activityDao) {
+		this.activityDao = activityDao;
 	}
 
 	@RequestMapping(value="register",method=RequestMethod.GET)
@@ -79,17 +99,32 @@ public class CustomerController {
 		}
 		List<ActivityRegisterRecord> activityRegisterRecords=userRegisterActivity.getActivityRegisterRecords(openid);
 		
-		model.addAttribute("arr", activityRegisterRecords);
+		model.addAttribute("arrs", activityRegisterRecords);
+		model.addAttribute("openid", openid);
 		return "registerActivity";
 	}
 	
+	@RequestMapping(value="registerActivitySave",method=RequestMethod.POST)
+	public String registerActivitySave(ActivityItem activityItem,Model model){
+		if(userRegisterActivity.isFull(activityItem.getActivityId())){
+			return "error-registerActivity";
+		}
+		activityItem.setRegisteDate(new Date());
+		activityItemDao.save(activityItem);
+		return "redirect:registerdActivities";
+	}
+	
 	@RequestMapping(value="registerdActivities",method=RequestMethod.GET)
-	public String getActivities(){
+	public String getActivities(Model model){
+		List<Activity> activities=activityDao.getEndActivities();
+		model.addAttribute("activities", activities);
 		return "activities";
 	}
 	
 	@RequestMapping(value="registerActivityList",method=RequestMethod.GET)
-	public String getActivityRegister(){
+	public String getActivityRegister(long activityId,Model model){
+		List<UserInfo> userInfos=activityItemDao.getRegisterList(activityId);
+		model.addAttribute("userInfos", userInfos);
 		return "activity-register-peoples";
 	}
 }

@@ -15,4 +15,6 @@ public interface UserRegisterActivity {
 	boolean isRegister(String openid);
 	
 	List<ActivityRegisterRecord> getActivityRegisterRecords(String openid);
+	
+	boolean isFull(long activityId);
 }

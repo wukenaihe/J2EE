@@ -38,41 +38,15 @@
         </tr>
     </thead>
     <tbody>
+        <c:forEach items="${userInfos}" var="userInfo">
         <tr>
-            <td><img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJIKrM2che2u6B9uNt5LgSvCTes4gJ8MT9AgN8CojTqzJUw1wU7ZDRxwyciaCIJ6rEfsceywEwARLw/0" height="32px" width="32px"></td>
-            <td>无可奈何</td>
-            <td>男</td>
-            <td>单身</td>
-            <td>26</td>
+            <td><img src="${userInfo.headimgurl}" height="32px" width="32px"></td>
+            <td>${userInfo.nickname}</td>
+            <td><c:if test="${userInfo.sex==1}">男</c:if><c:if test="${userInfo.sex==2}">女</c:if></td>
+            <td>${userInfo.single}</td>
+            <td>${userInfo.age}</td>
         </tr>
-        <tr>
-            <td><img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJIKrM2che2u6B9uNt5LgSvCTes4gJ8MT9AgN8CojTqzJUw1wU7ZDRxwyciaCIJ6rEfsceywEwARLw/0" height="32px" width="32px"></td>
-            <td>无可奈何</td>
-            <td>男</td>
-            <td>单身</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td><img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJIKrM2che2u6B9uNt5LgSvCTes4gJ8MT9AgN8CojTqzJUw1wU7ZDRxwyciaCIJ6rEfsceywEwARLw/0" height="32px" width="32px"></td>
-            <td>无可奈何</td>
-            <td>男</td>
-            <td>单身</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td><img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJIKrM2che2u6B9uNt5LgSvCTes4gJ8MT9AgN8CojTqzJUw1wU7ZDRxwyciaCIJ6rEfsceywEwARLw/0" height="32px" width="32px"></td>
-            <td>无可奈何</td>
-            <td>男</td>
-            <td>有伴</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td><img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJIKrM2che2u6B9uNt5LgSvCTes4gJ8MT9AgN8CojTqzJUw1wU7ZDRxwyciaCIJ6rEfsceywEwARLw/0" height="32px" width="32px"></td>
-            <td>无可奈何</td>
-            <td>男</td>
-            <td>求交往</td>
-            <td>26</td>
-        </tr>
+        </c:forEach>
     </tbody>
 </table>
 		</div>

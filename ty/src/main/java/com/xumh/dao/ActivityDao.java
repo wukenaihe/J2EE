@@ -6,4 +6,6 @@ import com.xumh.bean.Activity;
 
 public interface ActivityDao extends Dao<Activity> {
 	List<Activity> getUnexceedActivities();
+	
+	List<Activity> getEndActivities();
 }

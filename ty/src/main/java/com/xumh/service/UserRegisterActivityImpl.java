@@ -66,5 +66,14 @@ public class UserRegisterActivityImpl implements UserRegisterActivity{
 		}
 		return activityRegisterRecords;
 	}
+	@Override
+	public boolean isFull(long activityId) {
+		Activity activity=activityDao.get(activityId);
+		int registerNum=activityItemDao.registerNum(activityId);
+		if(registerNum>=activity.getMaxPepole()){
+			return true;
+		}
+		return false;
+	}
 
 }

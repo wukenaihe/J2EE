@@ -18,7 +18,7 @@ public class ActivityRegisterRecord implements Serializable{
 		this.activityName = activityName;
 	}
 
-	public boolean isFull() {
+	public boolean getIsFull() {
 		return isFull;
 	}
 
@@ -26,7 +26,7 @@ public class ActivityRegisterRecord implements Serializable{
 		this.isFull = isFull;
 	}
 
-	public boolean isRegister() {
+	public boolean getIsRegister() {
 		return isRegister;
 	}
 

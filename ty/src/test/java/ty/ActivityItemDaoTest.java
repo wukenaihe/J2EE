@@ -1,6 +1,7 @@
 package ty;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import com.xumh.bean.ActivityItem;
+import com.xumh.bean.UserInfo;
 import com.xumh.dao.ActivityItemDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,6 +34,7 @@ public class ActivityItemDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void registerNum(){
 		int num=activityItemDao.registerNum(1);
 		
@@ -51,5 +54,11 @@ public class ActivityItemDaoTest {
 		activityItem.setRemark("会带个人");
 		
 		activityItemDao.save(activityItem);
+	}
+	
+	@Test
+	public void getRegisterList(){
+		List<UserInfo> userInfos=activityItemDao.getRegisterList(1);
+		System.out.println(userInfos);
 	}
 }

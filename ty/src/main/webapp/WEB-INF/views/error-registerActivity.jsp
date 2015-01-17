@@ -21,7 +21,7 @@
 <body>
 	<div id="subjects" data-role="page" id="home">
 		<div data-role="content" data-theme="b">
-			<div>报名未成功！请重新报名</div>
+			<div>抱歉！在你犹豫的瞬间，有人抢你前面报名了。选择其他活动或者等其他人退出</div>
 		</div>
 </body>
 </html>

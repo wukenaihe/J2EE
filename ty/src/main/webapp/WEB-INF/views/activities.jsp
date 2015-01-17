@@ -28,13 +28,9 @@
 		</div>
 		<div data-role="content" data-theme="b">
 			<ul data-role="listview" data-inset="true">
-				<li><a href="#">Acura</a></li>
-				<li><a href="#">Audi</a></li>
-				<li><a href="#">BMW</a></li>
-				<li><a href="#">Cadillac</a></li>
-				<li><a href="#">Ferrari</a></li>
-				<li><a href="#">Acura</a></li>
-				<li><a href="#">Audi</a></li>
+				<c:forEach items="${activities}" var="activity">
+					<li><a href="registerActivityList?activityId=${activity.id}">${activity.name}</a></li>
+				</c:forEach>
 			</ul>
 		</div>
 <!-- 		<div data-role="footer" data-position="fixed"> -->

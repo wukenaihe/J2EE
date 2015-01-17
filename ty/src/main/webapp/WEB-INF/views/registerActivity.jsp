@@ -12,9 +12,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <title>活动报名</title>
 <style type="text/css">
 </style>
@@ -25,32 +27,63 @@
 			<h1>活动报名</h1>
 		</div>
 		<div data-role="content" data-theme="b">
-			<form action="form.php" method="post">
+			<form action="registerActivitySave" method="post">
+				<input type="hidden" name="openId" value=${openid}></input>
 				<div data-role="fieldcontain">
-				    <fieldset data-role="controlgroup">
-				    	<legend>活动</legend>
-				         	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
-				         	<label for="radio-choice-1">大明山</label>
-
-				         	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  />
-				         	<label for="radio-choice-2">黄山</label>
-
-				         	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3"  />
-				         	<label for="radio-choice-3">清凉峰(已报25人)</label>
-
-				         	<input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4"  disabled="disabled" />
-				         	<label for="radio-choice-4">徽杭古道(已满)</label>
-				    </fieldset>
+					<fieldset data-role="controlgroup">
+						<legend>活动</legend>
+						<c:forEach items="${arrs}" var="item">
+							<input type="radio" name="activityId" id="${item.activityId}"
+								value="${item.activityId}"
+								<c:if test="${item.isFull||item.isRegister}">disabled</c:if> />
+							<label for="${item.activityId}">${item.activityName} <c:if
+									test="${item.isFull&&!item.isRegister}">(人数已满)</c:if>
+								<c:if test="${item.isRegister}">(已报名)</c:if>&nbsp&nbsp&nbsp&nbsp${item.registerNum}人
+							</label>
+						</c:forEach>
+					</fieldset>
 				</div>
 				<div data-role="fieldcontain">
-				<label for="textarea">备注信息:</label>
-					<textarea name="textarea" id="textarea"></textarea>
+					<label for="textarea">备注信息:</label>
+					<textarea name="remark" id="textarea"></textarea>
 				</div>
 				<div class="ui-field-contain">
-				    <button type="submit" id="submit-1" class="ui-shadow ui-btn ui-corner-all">提交</button>
+					    
+					<button type="submit" id="submit-1"
+						class="ui-shadow ui-btn ui-corner-all">提交</button>
 				</div>
 			</form>
 		</div>
+		<div data-role="popup" id="popupCloseRight" class="ui-content">
+			    <a href="#" data-rel="back"
+				class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			<p>请选择你要参加的活动后再提交！</p>
+		</div>
 	</div>
 </body>
+<script>
+	$(document).delegate(
+			'#home',
+			'pageshow',
+			function() {
+				var the_height = ($(window).height()
+						- $(this).find('[data-role="header"]').height() - $(
+						this).find('[data-role="footer"]').height());
+				$(this).height($(window).height())
+						.find('[data-role="content"]').height(the_height);
+			});
+
+	$("form").submit(function(e) {
+		var form = $("form");
+		var arrays = form.serializeArray();
+		for(var i=0;i<arrays.length;++i){
+			if(arrays[i].name=="activityId"){
+				form.submit();
+				return true;
+			}
+		}
+		$("#popupCloseRight").popup("open");
+		e.preventDefault();
+	});
+</script>
 </html>
